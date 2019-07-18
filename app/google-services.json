@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "132238956013",
+    "firebase_url": "https://cointe-7df0b.firebaseio.com",
+    "project_id": "cointe-7df0b",
+    "storage_bucket": "cointe-7df0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132238956013:android:0a6d100c545d6dae",
+        "android_client_info": {
+          "package_name": "flavio.com.cointe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132238956013-c7ahj60ibknpbrop5vf4fu9111gcvbvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "flavio.com.cointe",
+            "certificate_hash": "0d865df82d1a557cec36544a927341ddd8cae8f8"
+          }
+        },
+        {
+          "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFjC87pDh6GPzzXDC8tw_HUMXAMxoJ454"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132238956013:android:8a49f3adfd44b2e9",
+        "android_client_info": {
+          "package_name": "flavio.com.cointeclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132238956013-1jjq51960ktqo0oi01cfri9butfcggcc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "flavio.com.cointeclient",
+            "certificate_hash": "0d865df82d1a557cec36544a927341ddd8cae8f8"
+          }
+        },
+        {
+          "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFjC87pDh6GPzzXDC8tw_HUMXAMxoJ454"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132238956013:android:5b7d70ba9d1e1d3c",
+        "android_client_info": {
+          "package_name": "flavio.com.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132238956013-jbbkk27jmfb2hhp4q12lfqo75qjufo98.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "flavio.com.myapplication",
+            "certificate_hash": "0d865df82d1a557cec36544a927341ddd8cae8f8"
+          }
+        },
+        {
+          "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFjC87pDh6GPzzXDC8tw_HUMXAMxoJ454"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132238956013:android:872fed84bb985e5b",
+        "android_client_info": {
+          "package_name": "flavio.com.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132238956013-og5o0gmv4i4njoej0jnq5j6t0l8narod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "flavio.com.test",
+            "certificate_hash": "0d865df82d1a557cec36544a927341ddd8cae8f8"
+          }
+        },
+        {
+          "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFjC87pDh6GPzzXDC8tw_HUMXAMxoJ454"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132238956013-k5c4s5953307ihp06n3gegcnls29hm50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

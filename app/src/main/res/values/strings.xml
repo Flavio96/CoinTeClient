@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CoinTe client</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string-array name="types_list">
+        <item>Altro</item>
+        <item>2 euro</item>
+        <item>1 euro</item>
+        <item>50 cent</item>
+        <item>20 cent</item>
+        <item>10 cent</item>
+        <item>5 cent</item>
+        <item>2 cent</item>
+        <item>1 cent</item>
+    </string-array>
+</resources>
