@@ -1,7 +1,9 @@
 package flavio.com.cointeclient;
 
 import android.animation.Animator;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -67,7 +69,7 @@ public class CoinAdapter extends BaseAdapter {
         // 3
         final ImageView imageView = (ImageView)convertView.findViewById(R.id.grid_coin_img);
 
-        TextView txt = (TextView) convertView.findViewById(R.id.coinType);
+        final TextView txt = (TextView) convertView.findViewById(R.id.coinType);
         TextView txtId = (TextView) convertView.findViewById(R.id.coinId);
 
         txtId.setText("#"+coin.getId());
@@ -103,101 +105,12 @@ public class CoinAdapter extends BaseAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        final File finalLocalFile = localFile;
-//        storageRef.child("coins" + File.separator + filename).getFile(localFile)
-//                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-//                        // Successfully downloaded data to local file
-//                        imageView.setImageBitmap(BitmapFactory.decodeFile(finalLocalFile.getAbsolutePath()));
-//
-//                    }
-//                });
-        //imageView.setImageBitmap(coin.getImage());
 
-        File temp = imageList.get(filename);
+        final File temp = imageList.get(filename);
         imageView.setImageURI(Uri.fromFile(temp));
 
 
         final View view = convertView;
-
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imageView.setRotationY(0f);
-//                imageView.animate().rotationY(90f).setListener(new Animator.AnimatorListener()
-//                {
-//
-//                    @Override
-//                    public void onAnimationStart(Animator animation)
-//                    {
-//                    }
-//
-//                    @Override
-//                    public void onAnimationRepeat(Animator animation)
-//                    {
-//                    }
-//
-//                    @Override
-//                    public void onAnimationEnd(Animator animation)
-//                    {
-//                        switch(coin.getValue()){
-//                            case 200:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.two_euros);
-//                                break;
-//                            case 100:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.one_euro);
-//                                break;
-//                            case 50:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.fifty_cent);
-//                                break;
-//                            case 20:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.twenty_cent);
-//                                break;
-//                            case 10: imageView.setImageResource(R.drawable.ten_cent);
-//                                break;
-//                            case 5:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.five_cent);
-//                                break;
-//                            case 2:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.two_cent);
-//                                break;
-//                            case 1:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageResource(R.drawable.one_cent);
-//                                break;
-//                            case 0:if(!imageView.getDrawable().equals(coinBack))
-//                                imageView.setImageDrawable(coinBack);
-//                            else
-//                                imageView.setImageDrawable(coinFront);
-//                                break;
-//                        }
-//
-//                        imageView.setRotationY(270f);
-//                        imageView.animate().rotationY(360f).setListener(null);
-//
-//                    }
-//
-//                    @Override
-//                    public void onAnimationCancel(Animator animation)
-//                    {
-//                    }
-//                });
-//            }
-//        });
 
         return convertView;
     }

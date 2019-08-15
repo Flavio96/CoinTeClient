@@ -2,8 +2,13 @@ package flavio.com.cointeclient;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -32,6 +37,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -40,6 +46,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         final StorageReference storageRef;
         storageRef = FirebaseStorage.getInstance().getReference();
 
+        ctx = MainActivity.this;
         gridView = findViewById(R.id.gridview);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -157,6 +165,19 @@ public class MainActivity extends AppCompatActivity {
                     gridView.setVisibility(View.VISIBLE);
                     CoinAdapter coinsAdapter = new CoinAdapter(getApplicationContext(), coinList, imageList);
                     gridView.setAdapter(coinsAdapter);
+                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent i = new Intent(MainActivity.this, DetailActivity.class);
+                            ImageView img = view.findViewById(R.id.grid_coin_img);
+                            BitmapDrawable dr = (BitmapDrawable) img.getDrawable();
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            dr.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            byte[] byteArray = stream.toByteArray();
+                            i.putExtra("img", byteArray);
+                            startActivity(i);
+                        }
+                    });
                 }
             }
         });
@@ -219,14 +240,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                     for (Coin c : coinList){
                         if(type!=0) {
-                            if ((c.getDescription() != null && c.getDescription().contains(criteria.getText()))
+                            if ((
+                                    (c.getDescription() != null && c.getDescription().contains(criteria.getText()))
                                     || (c.getNation() != null && c.getNation().contains(criteria.getText()))
                                     || (c.getYear() != null && c.getYear().toString().contains(criteria.getText()))
-                                    || c.getValue() == type) {
+                            )&& c.getValue() == type) {
                                 filteredList.add(c);
                             }
                         }else{
-                            if ((c.getDescription() != null && c.getDescription().contains(criteria.getText())) || (c.getNation() != null && c.getNation().contains(criteria.getText())) || (c.getYear() != null && c.getYear().toString().contains(criteria.getText()))) {
+                            if ((c.getDescription() != null && c.getDescription().contains(criteria.getText()))
+                                    || (c.getNation() != null && c.getNation().contains(criteria.getText()))
+                                    || (c.getYear() != null && c.getYear().toString().contains(criteria.getText()))) {
                                 filteredList.add(c);
                             }
                         }
