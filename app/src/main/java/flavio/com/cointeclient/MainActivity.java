@@ -37,6 +37,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     GridView gridView;
     Context ctx;
-
+    static Dialog d;
 
     ArrayMap<String, File> localTmpFileArray = new ArrayMap<String, File>();
 
@@ -119,19 +120,68 @@ public class MainActivity extends AppCompatActivity {
                                 coin.setYear(year.intValue());
                                 coinList.add(coin);
 
-                                String filename=coin.getImgPath().substring(coin.getImgPath().lastIndexOf("/")+1);
-                                filename = filename.replaceAll("&&", "");
-                                try {
-                                    imageList.put(filename, File.createTempFile("coins", ".png"));
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                                if(coin.getValue() == 0){
+                                    String[] y = coin.getImgPath().split("&&");
+                                    String[] x = new String[2];
+                                    if (y.length < 2){
+                                        x[0] = y[0];
+                                        x[1] = "";
+                                    }else{
+                                        x[0] = y[0];
+                                        x[1] = y[1];
+                                    }
+
+                                    String filename = x[0].substring(x[0].lastIndexOf("/") + 1);
+
+                                    try {
+                                        imageList.put(filename, File.createTempFile("coins", ".png"));
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    if(!x[1].equals("")){
+                                        String filename2 = x[1].substring(x[1].lastIndexOf("/") + 1);
+                                        try {
+                                            imageList.put(filename2, File.createTempFile("coins", ".png"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }else {
+                                    String filename = coin.getImgPath().substring(coin.getImgPath().lastIndexOf("/") + 1);
+                                    filename = filename.replaceAll("&&", "");
+                                    try {
+                                        imageList.put(filename, File.createTempFile("coins", ".png"));
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                             for (Coin c : coinList){
-
-                                String filename=c.getImgPath().substring(c.getImgPath().lastIndexOf("/")+1);
-                                filename = filename.replaceAll("&&", "");
-                                populateImageView(filename, storageRef);
+                                if(c.getValue() == 0) {
+                                    String[] y = c.getImgPath().split("&&");
+                                    String[] x = new String[2];
+                                    if (y.length < 2) {
+                                        x[0] = y[0];
+                                        x[1] = "";
+                                        String filename = x[0].substring(x[0].lastIndexOf("/") + 1);
+                                        filename = filename.replaceAll("&&", "");
+                                        populateImageView(filename, storageRef);
+                                    } else {
+                                        x[0] = y[0];
+                                        x[1] = y[1];
+                                        String filename = x[0].substring(x[0].lastIndexOf("/") + 1);
+                                        filename = filename.replaceAll("&&", "");
+                                        populateImageView(filename, storageRef);
+                                        String filename2 = x[1].substring(x[1].lastIndexOf("/") + 1);
+                                        filename2 = filename2.replaceAll("&&", "");
+                                        populateImageView(filename2, storageRef);
+                                    }
+                                }else {
+                                    String filename = c.getImgPath().substring(c.getImgPath().lastIndexOf("/") + 1);
+                                    filename = filename.replaceAll("&&", "");
+                                    populateImageView(filename, storageRef);
+                                }
                             }
 
                         } else {
@@ -141,7 +191,8 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-
+        d = new Dialog(this);
+        d.setContentView(R.layout.activity_detail);
 
     }
     private void populateImageView(final String serverSideImageName, final StorageReference storageRef) {
@@ -165,19 +216,6 @@ public class MainActivity extends AppCompatActivity {
                     gridView.setVisibility(View.VISIBLE);
                     CoinAdapter coinsAdapter = new CoinAdapter(getApplicationContext(), coinList, imageList);
                     gridView.setAdapter(coinsAdapter);
-                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent i = new Intent(MainActivity.this, DetailActivity.class);
-                            ImageView img = view.findViewById(R.id.grid_coin_img);
-                            BitmapDrawable dr = (BitmapDrawable) img.getDrawable();
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            dr.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, stream);
-                            byte[] byteArray = stream.toByteArray();
-                            i.putExtra("img", byteArray);
-                            startActivity(i);
-                        }
-                    });
                 }
             }
         });

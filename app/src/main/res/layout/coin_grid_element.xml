@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/grid_coin_img"
         android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
         android:text="TextView"
         android:textSize="8sp"
         android:textStyle="italic" />
